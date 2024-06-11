@@ -1,7 +1,8 @@
 {
   "expo": {
-    "name": "busmein-react",
-    "slug": "busmein-react",
+    "name": "Busmein",
+    "slug": "busmein",
+    "scheme": "busmein",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -21,7 +22,11 @@
       }
     },
     "web": {
+      "bundler": "metro",
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "plugins": [
+      "expo-router"
+    ]
   }
 }
