@@ -1,5 +1,5 @@
-import { Link } from 'expo-router';
-import { Text, View, SafeAreaView, ScrollView, TextInput, Pressable } from 'react-native';
+import { Link, useRouter } from 'expo-router';
+import { Text, View, SafeAreaView, ScrollView, TextInput, Pressable, Image, FlatList, TouchableHighlight } from 'react-native';
 import { BellIcon, Bars3Icon, CalendarDaysIcon } from "react-native-heroicons/outline"
 import FontAwesome5 from '@expo/vector-icons/FontAwesome5';
 import { MaterialIcons } from '@expo/vector-icons';
@@ -8,6 +8,8 @@ import { useState } from 'react';
 import MainButton from '../components/button'
 
 export default function App() {
+  const router = useRouter()
+
   // pickup date
   const [pickupDate, setPickupDate] = useState(new Date())
   const [boardingDate, setBoardingDate] = useState(new Date().toDateString())
@@ -49,22 +51,35 @@ export default function App() {
     setSearchingBuses(true)
     setTimeout(() => {
       setSearchingBuses(false)
+      router.replace('trip/listing')
     }, 3000);
   }
 
+  const offerImages = [
+    {id: '1', image: "https://ik.imagekit.io/k4cixy45r/bumein/Valid%20Until%2023%20June%202024_zL18id3ZOS.png?updatedAt=1712903106500",},
+    {id: '2', image: "https://ik.imagekit.io/k4cixy45r/bumein/Valid%20Until%2023%20June%202024%20(1)_3MNeNafCy.png?updatedAt=1712985683953",},
+    {id: '3', image: "https://ik.imagekit.io/k4cixy45r/bumein/Valid%20Until%2023%20June%202024%20(2)_J8_1y50RS.png?updatedAt=1712985735061",},
+  ];
+
+  const destinations = [
+    {id: "1", image: "https://ik.imagekit.io/k4cixy45r/bumein/Instagram%20Story%20(2)-min_ZaJXFHhXn.png?updatedAt=1712901894964"},
+    {id: "2", image: "https://ik.imagekit.io/k4cixy45r/bumein/Instagram%20Story-min_VQy3q2Nvo.png?updatedAt=1712986684292"},
+    {id: "3", image: "https://ik.imagekit.io/k4cixy45r/bumein/Instagram%20Story%20(1)-min_A1qpcyzBLb.png?updatedAt=1712986685875"},
+  ];
+
   return (
     <SafeAreaView className="flex-1 bg-white">
-      <ScrollView className="pb-24 pt-10">
+      <ScrollView className="mt-10">
         <View className="px-8 py-4 bg-blue-800 flex-row items-center justify-between gap-4">
           <Link href={'/'}>
-            <Bars3Icon size={30} strokeWidth={2} color={'#FFFFFF'} />,
+            <Bars3Icon size={30} strokeWidth={2} color={'#FFFFFF'} />
           </Link>
-          <Link href={'/profile'}>
-            <BellIcon size={20} strokeWidth={2} color={'#FFFFFF'} />,
+          <Link href={'/notifications'}>
+            <BellIcon size={20} strokeWidth={2} color={'#FFFFFF'} />
           </Link>
         </View>
 
-        <View className="relative">
+        <View className="pb-24 relative">
           <View className="h-[35vh] absolute top-0 left-0 right-0 bg-blue-800" style={{borderBottomEndRadius: 60, borderBottomStartRadius: 60}}></View>
 
           <View className="items-center px-8">
@@ -148,6 +163,52 @@ export default function App() {
 
               {/* submit btn */}
               <MainButton title="Search Buses" callback={searchBus} loading={searchingBuses} disabled={searchingBuses} />
+            </View>
+
+            {/* offer  */}
+            <View className="w-full max-w-sm mx-auto mt-8">
+              <Text className="text-lg font-bold  text-blue-800 z-10">Offers</Text>
+              <Text className="text-sm text-blue-800 z-10">
+                Get Best Deals With Great Offers
+              </Text>
+              <View className="w-full mt-4">
+                <FlatList
+                  data={offerImages}
+                  renderItem={({item, index, separators}) => (
+                    <TouchableHighlight
+                      key={item.id}
+                      onPress={() => console.log(item)}
+                      >
+                      <Image source={{uri: item.image}} className="w-56 h-20 mr-4" />
+                    </TouchableHighlight>
+                  )}
+                  horizontal={true}
+                  // initialNumToRender="1.6"
+                  style={{flex: 1}}
+                />
+              </View>
+            </View>
+
+            {/* destinatins  */}
+            <View className="w-full max-w-sm mx-auto mt-8">
+              <Text className="text-lg font-bold  text-blue-800 z-10">Top Destinations</Text>
+              <Text className="text-sm text-blue-800 z-10">
+                Travel Through the city
+              </Text>
+              <View className="w-full mt-4">
+                <FlatList
+                  data={destinations}
+                  renderItem={({item, index, separators}) => (
+                    <TouchableHighlight
+                      key={item.id}
+                      onPress={() => console.log(item)}
+                      >
+                      <Image source={{uri: item.image}} className="w-36 h-60 mr-4 rounded-xl" />
+                    </TouchableHighlight>
+                  )}
+                  horizontal={true}
+                />
+              </View>
             </View>
           </View>
         </View>

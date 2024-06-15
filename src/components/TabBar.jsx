@@ -1,12 +1,18 @@
+import { useSegments } from 'expo-router'
 import { StyleSheet, TouchableOpacity, Text, View } from 'react-native'
 import { HomeIcon, TicketIcon, UserIcon } from "react-native-heroicons/outline"
 
 const TabBar = ({ state, descriptors, navigation }) => {
+  const slugs = useSegments()
 
   const icons = {
     index: (props) => <HomeIcon size={20} strokeWidth={2} color={'#FFFFFF'} {...props} />,
     bookings: (props) => <TicketIcon size={20} strokeWidth={2} color={'#FFFFFF'} {...props} />,
     profile: (props) => <UserIcon size={20} strokeWidth={2} color={'#FFFFFF'} {...props} />,
+  }
+
+  if(['auth','trip','checkout'].includes(slugs[0])){
+    return;
   }
 
   return (
@@ -21,7 +27,7 @@ const TabBar = ({ state, descriptors, navigation }) => {
               ? options.title
               : route.name;
 
-          if(['_sitemap','+not-found','auth'].includes(route.name)) return null
+          if(['_sitemap','+not-found','auth','notifications','trip','checkout'].includes(route.name)) return null
 
           const isFocused = state.index === index;
 

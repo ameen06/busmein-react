@@ -18,6 +18,7 @@ const styles = StyleSheet.create({
         paddingVertical: 12,
         paddingHorizontal: 16,
         marginTop: 16,
+        width: '100%',
     },
     text: {
         fontSize: 16,
