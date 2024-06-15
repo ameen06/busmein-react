@@ -1,6 +1,6 @@
 import { Pressable, Text, View, ScrollView, SafeAreaView } from 'react-native'
 import { ChevronLeftIcon, } from "react-native-heroicons/outline"
-import LocationItem from '../../components/locationItem'
+import LocationItem from '../../../../components/locationItem'
 import { useRouter } from 'expo-router'
 
 const boarding = () => {

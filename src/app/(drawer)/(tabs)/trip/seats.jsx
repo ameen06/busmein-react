@@ -3,7 +3,7 @@ import { useRouter } from 'expo-router'
 import { useEffect, useState } from 'react'
 import { ChevronLeftIcon, ArrowRightIcon, InformationCircleIcon } from "react-native-heroicons/outline"
 import { MaterialIcons } from '@expo/vector-icons';
-import MainButton from '../../components/button'
+import MainButton from '../../../../components/button'
 
 const seats = () => {
   const router = useRouter()

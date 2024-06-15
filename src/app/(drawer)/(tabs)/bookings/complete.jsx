@@ -1,8 +1,8 @@
 import { SafeAreaView, ScrollView, View } from 'react-native'
-import BookingNavBar from '../../components/bookingNavBar'
-import TicketItem from '../../components/ticketItem'
+import BookingNavBar from '../../../../components/bookingNavBar'
+import TicketItem from '../../../../components/ticketItem'
 
-const cancelled = () => {
+const complete = () => {
   return (
     <SafeAreaView className="flex-1">
       <ScrollView className="pb-24">
@@ -11,8 +11,6 @@ const cancelled = () => {
 
           <View className="mt-8 px-4 space-y-4">
             <TicketItem />
-            <TicketItem />
-            <TicketItem />
           </View>
         </View>
       </ScrollView>
@@ -20,4 +18,4 @@ const cancelled = () => {
   )
 }
 
-export default cancelled
+export default complete

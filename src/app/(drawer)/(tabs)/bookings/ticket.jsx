@@ -1,6 +1,6 @@
 import { Image, SafeAreaView, ScrollView, Text, View } from 'react-native'
 import { ArrowsRightLeftIcon } from "react-native-heroicons/outline"
-import MainButton from '../../components/button'
+import MainButton from '../../../../components/button'
 import { useRouter } from 'expo-router'
 
 const ticket = () => {

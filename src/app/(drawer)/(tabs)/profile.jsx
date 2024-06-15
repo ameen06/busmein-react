@@ -4,7 +4,7 @@ import { PencilSquareIcon } from "react-native-heroicons/outline";
 const profile = () => {
   return (
     <SafeAreaView className="flex-1 bg-white">
-      <ScrollView className="pb-24 mt-10">
+      <ScrollView className="pb-24">
         <View className="w-full items-center justify-center bg-transparent">
           <View className="w-32 h-32 rounded-full shadow-lg border-4 border-white bg-gray-200 relative">
             <Image className="w-32 h-32 rounded-full shadow-lg border-4 border-slate-100" source={{uri: "https://ik.imagekit.io/k4cixy45r/defaultt.jpg?updatedAt=1668418234132?tr=w-300,h-300"}} />

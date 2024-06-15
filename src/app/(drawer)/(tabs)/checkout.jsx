@@ -1,7 +1,7 @@
 import { Pressable, SafeAreaView, ScrollView, Text, TextInput, View } from 'react-native'
 import { ChevronLeftIcon, ArrowRightIcon, EnvelopeIcon, PhoneIcon, UserIcon } from "react-native-heroicons/outline"
 import { useRouter } from 'expo-router'
-import MainButton from '../components/button'
+import MainButton from '../../../components/button'
 import { useState } from 'react'
 
 const checkout = () => {
@@ -18,7 +18,7 @@ const checkout = () => {
 
     return (
         <SafeAreaView className="flex-1 bg-white">
-           <View className="w-full mt-10 border-b border-gray-300 flex-row justify-between items-center px-4 py-2">
+           <View className="w-full border-b border-gray-300 flex-row justify-between items-center px-4 py-2">
                 <View className="w-full flex-row items-center space-x-4">
                     {/* back arrow */}
                     <Pressable onPress={()=>router.back()} className="focus:outline-none focus:fill-blue-600">

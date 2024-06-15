@@ -1,11 +1,11 @@
 import { SafeAreaView, ScrollView, View } from 'react-native'
-import BookingNavBar from '../../components/bookingNavBar'
-import TicketItem from '../../components/ticketItem'
+import BookingNavBar from '../../../../components/bookingNavBar'
+import TicketItem from '../../../../components/ticketItem'
 
 const active = () => {
   return (
-    <SafeAreaView className="flex-1">
-      <ScrollView className="pb-24">
+    <SafeAreaView className="m-0">
+      <ScrollView className="m-0 pb-24">
         <View>
           <BookingNavBar />
 

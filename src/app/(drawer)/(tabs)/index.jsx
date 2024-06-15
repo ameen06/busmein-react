@@ -5,10 +5,12 @@ import FontAwesome5 from '@expo/vector-icons/FontAwesome5';
 import { MaterialIcons } from '@expo/vector-icons';
 import DateTimePicker from '@react-native-community/datetimepicker';
 import { useState } from 'react';
-import MainButton from '../components/button'
+import MainButton from '../../../components/button'
+import { useNavigation } from 'expo-router';
 
 export default function App() {
   const router = useRouter()
+  const navigation = useNavigation()
 
   // pickup date
   const [pickupDate, setPickupDate] = useState(new Date())
@@ -69,11 +71,11 @@ export default function App() {
 
   return (
     <SafeAreaView className="flex-1 bg-white">
-      <ScrollView className="mt-10">
+      <ScrollView>
         <View className="px-8 py-4 bg-blue-800 flex-row items-center justify-between gap-4">
-          <Link href={'/'}>
+          <Pressable onPress={()=>navigation.openDrawer()}>
             <Bars3Icon size={30} strokeWidth={2} color={'#FFFFFF'} />
-          </Link>
+          </Pressable>
           <Link href={'/notifications'}>
             <BellIcon size={20} strokeWidth={2} color={'#FFFFFF'} />
           </Link>

@@ -2,7 +2,7 @@ import { Pressable, SafeAreaView, ScrollView, StyleSheet, Text, View } from 'rea
 import { useNavigation, useRouter } from 'expo-router'
 import { useEffect } from 'react'
 import { ChevronLeftIcon, ArrowRightIcon, FunnelIcon, AdjustmentsHorizontalIcon } from "react-native-heroicons/outline"
-import BusCard from '../../components/busCard'
+import BusCard from '../../../../components/busCard'
 
 const listing = () => {
   const navigation = useNavigation();

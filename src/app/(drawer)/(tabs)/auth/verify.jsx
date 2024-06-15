@@ -1,7 +1,7 @@
 import { Alert, Image, Pressable, Text, TextInput, TouchableOpacity, View } from 'react-native'
 import { router } from 'expo-router'
 import { useState } from 'react'
-import MainButton from '../../components/button'
+import MainButton from '../../../../components/button'
 
 const verify = () => {
   const [isLoading, setLoading] = useState(false);

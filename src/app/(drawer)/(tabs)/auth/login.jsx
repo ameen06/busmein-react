@@ -1,17 +1,16 @@
 import { Alert, Image, Pressable, Text, TextInput, TouchableOpacity, View } from 'react-native'
-import { Link, router } from 'expo-router'
 import { useState } from 'react'
-import MainButton from '../../components/button'
-import { PhoneIcon, UserIcon, EnvelopeIcon } from "react-native-heroicons/outline";
+import { Link, router } from 'expo-router'
+import MainButton from '../../../../components/button'
+import { PhoneIcon } from "react-native-heroicons/outline";
 
-const register = () => {
+const login = () => {
     const [isLoading, setLoading] = useState(false);
 
-    const register = () => {
+    const login = () => {
         setLoading(true)
         setTimeout(() => {
             setLoading(false)
-            Alert.alert('Logged In');
             router.replace('auth/verify')
         }, 5000);
     }
@@ -39,40 +38,28 @@ const register = () => {
                     <View className="px-6 py-8 space-y-4">
                         {/* auth page switch buttons */}
                         <View className="rounded-lg border-[2px] border-blue-800 flex-row items-center p-0">
-                            <View className="w-1/2 px-4 py-2.5 bg-blue-800 rounded-md focus:outline-none focus:bg-blue-900">
-                                <Text className="text-white font-semibold text-center">SIGN UP</Text>
-                            </View>
-                            <Link replace href={'auth/login'} asChild className="w-1/2">
+                            <Link replace href={'auth/register'} asChild className="w-1/2">
                                 <Pressable>
                                     <View className="px-4 py-2.5 bg-white rounded-md focus:outline-none focus:bg-blue-900">
-                                        <Text className="text-blue-800 font-semibold text-center">LOGIN</Text>
+                                        <Text className="text-blue-800 font-semibold text-center">SIGN UP</Text>
                                     </View>
                                 </Pressable>
                             </Link>
+                            <View className="w-1/2 px-4 py-2.5 bg-blue-800 rounded-md focus:outline-none focus:bg-blue-900">
+                                <Text className="text-white font-semibold text-center">LOGIN</Text>
+                            </View>
                         </View>
 
                         {/* inputs */}
                         <View className="w-full space-y-4">
-                            {/* name */}
-                            <View className="w-full flex-row items-center bg-white border-2 border-blue-800 p-2.5 rounded-lg">
-                                <UserIcon size={20} strokeWidth={2} color={'#1e40af'}/>
-
-                                <TextInput className="flex-1 pl-2 bg-white rounded-lg text-gray-900 text-sm placeholder-blue-800" placeholder="Enter Full Name" placeholderTextColor={'#1e40af'} required />
-                            </View>
-                            {/* email */}
-                            <View className="w-full flex-row items-center bg-white border-2 border-blue-800 p-2.5 rounded-lg">
-                                <EnvelopeIcon size={20} strokeWidth={2} color={'#1e40af'}/>
-
-                                <TextInput className="flex-1 pl-2 bg-white rounded-lg text-gray-900 text-sm placeholder-blue-800" placeholder="Enter Email" placeholderTextColor={'#1e40af'} required />
-                            </View>
                             {/* phone */}
                             <View className="w-full flex-row items-center bg-white border-2 border-blue-800 p-2.5 rounded-lg">
                                 <PhoneIcon size={20} strokeWidth={2} color={'#1e40af'}/>
 
-                                <TextInput className="flex-1 pl-2 bg-white rounded-lg text-gray-900 text-sm placeholder-blue-800" placeholder="Enter Phone" placeholderTextColor={'#1e40af'} required />
+                                <TextInput autoFocus={true} className="flex-1 pl-2 bg-white text-gray-900 text-sm placeholder-blue-800" placeholder="Enter Phone" placeholderTextColor={'#1e40af'} required />
                             </View>
 
-                            <MainButton title="Get Started" callback={register} loading={isLoading} disabled={isLoading} />
+                            <MainButton title="Generate OTP" callback={login} loading={isLoading} disabled={isLoading} />
 
                             {/* social logins */}
                             <View className="w-full">
@@ -108,4 +95,4 @@ const register = () => {
     )
 }
 
-export default register
+export default login
