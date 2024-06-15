@@ -9,7 +9,7 @@ const seats = () => {
   const router = useRouter()
   const [openSeatTypes, setOpenSeatTypes] = useState(false)
   const [loadingBoardingPoints, setLoadingBoardingPoints] = useState(false)
-
+  const [selectedSeats, setSelectedSeats] = useState([7, 13])
 
   const seatselectionComplete = () => {
     setLoadingBoardingPoints(true)
@@ -18,6 +18,30 @@ const seats = () => {
       router.replace('trip/boarding')
     }, 3000);
   }
+
+  const selectSeat = (seat) => {
+    const currentSelectedSeats = [...selectedSeats];
+    var newSelectedSeats = [];
+    if(currentSelectedSeats.includes(seat)){
+      newSelectedSeats = currentSelectedSeats.filter(value => value !== seat);
+    }else{
+      newSelectedSeats = new Set([...currentSelectedSeats, seat])
+    }
+    setSelectedSeats([...newSelectedSeats])
+  }
+
+  const seats = [
+    [1,2,3,4],
+    [5,6,7,8],
+    [9,10,11,12],
+    [13,14,15,16],
+    [17,18,19,20],
+    [21,22,23,24],
+    [25,26,27,28],
+    [29,30,31,32],
+    [33,34,35,36],
+    [37,38,39,40],
+  ];
 
   return (
     <SafeAreaView className="flex-1 bg-white">
@@ -77,9 +101,36 @@ const seats = () => {
           )}
 
           {/* seats */}
-          <View className="w-full mt-8 max-w-xs mx-auto bg-white pb-4 border border-gray-400 rounded-lg shadow-sm pb-8">
+          <View className="w-full mt-8 max-w-xs mx-auto bg-white border border-gray-400 rounded-lg shadow-sm pb-8">
             <View className="w-full p-3 border-b border-gray-300">
               <MaterialIcons name="event-seat" size={24} color="#374151" />
+            </View>
+
+            <View className="w-full mt-4 px-6 py-4">
+              {seats.map((seat, index) => {
+                return (
+                  <View key={index} className="w-full mb-2 flex-row items-center justify-between space-x-12">
+                    {/* left */}
+                    <View className="flex-1 flex-row items-center justify-end space-x-4">
+                      <Pressable onPress={()=>selectSeat(seat[0])} className="w-fit justify-end">
+                        <MaterialIcons name="event-seat" size={32} color={selectedSeats.includes(seat[0]) ? `#1d4ed8` : '#15803d'} />
+                      </Pressable>
+                      <Pressable onPress={()=>selectSeat(seat[1])} className="w-fit justify-end">
+                        <MaterialIcons name="event-seat" size={32} color={selectedSeats.includes(seat[1]) ? `#1d4ed8` : '#15803d'} />
+                      </Pressable>
+                    </View>
+                    {/* right */}
+                    <View className="flex-1 flex-row items-center justify-start space-x-4">
+                      <Pressable onPress={()=>selectSeat(seat[2])} className="w-fit">
+                        <MaterialIcons name="event-seat" size={32} color={selectedSeats.includes(seat[2]) ? `#1d4ed8` : '#15803d'} />
+                      </Pressable>
+                      <Pressable onPress={()=>selectSeat(seat[3])} className="w-fit">
+                        <MaterialIcons name="event-seat" size={32} color={selectedSeats.includes(seat[3]) ? `#1d4ed8` : '#15803d'} />
+                      </Pressable>
+                    </View>
+                  </View>
+                )
+              })}
             </View>
           </View>
 

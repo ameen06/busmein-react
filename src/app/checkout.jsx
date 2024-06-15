@@ -105,7 +105,7 @@ const checkout = () => {
                             </View>
                         </View>
 
-                        <MainButton title="Get Started" callback={checkoutBooking} loading={loading} disabled={loading} />
+                        <MainButton title="Pay Now" callback={checkoutBooking} loading={loading} disabled={loading} />
                     </View>
                 </View>
             </ScrollView>

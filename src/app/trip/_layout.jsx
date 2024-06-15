@@ -8,9 +8,9 @@ const ListingLayout = () => {
     headerTitleStyle: {
       fontWeight: 'bold',
     },}}>
+      <Stack.Screen name="seats" options={{ headerShown:false }} />
       <Stack.Screen name="boarding" options={{ headerShown:false }} />
       <Stack.Screen name="listing" options={{ headerShown:false }} />
-      <Stack.Screen name="seats" options={{ headerShown:false }} />
       <Stack.Screen name="dropping" options={{ headerShown:false }} />
     </Stack>
   )
