@@ -9,7 +9,8 @@ const seats = () => {
   const router = useRouter()
   const [openSeatTypes, setOpenSeatTypes] = useState(false)
   const [loadingBoardingPoints, setLoadingBoardingPoints] = useState(false)
-  const [selectedSeats, setSelectedSeats] = useState([7, 13])
+  const [selectedSeats, setSelectedSeats] = useState([])
+  const [bookedSeats, setBookedSeats] = useState([7, 13])
 
   const seatselectionComplete = () => {
     setLoadingBoardingPoints(true)
@@ -19,7 +20,18 @@ const seats = () => {
     }, 3000);
   }
 
+  const getSeatAvailability = (seat) => {
+    if(bookedSeats.includes(seat)){
+      return '#374151';
+    }else if(selectedSeats.includes(seat)){
+      return '#1d4ed8';
+    }else{
+      return '#15803d';
+    }
+  }
+
   const selectSeat = (seat) => {
+    console.log(seat)
     const currentSelectedSeats = [...selectedSeats];
     var newSelectedSeats = [];
     if(currentSelectedSeats.includes(seat)){
@@ -112,20 +124,20 @@ const seats = () => {
                   <View key={index} className="w-full mb-2 flex-row items-center justify-between space-x-12">
                     {/* left */}
                     <View className="flex-1 flex-row items-center justify-end space-x-4">
-                      <Pressable onPress={()=>selectSeat(seat[0])} className="w-fit justify-end">
-                        <MaterialIcons name="event-seat" size={32} color={selectedSeats.includes(seat[0]) ? `#1d4ed8` : '#15803d'} />
+                      <Pressable onPress={()=>selectSeat(seat[0])} disabled={getSeatAvailability(seat[0]) == '#374151'} className="w-fit justify-end">
+                        <MaterialIcons name="event-seat" size={32} color={getSeatAvailability(seat[0])} />
                       </Pressable>
-                      <Pressable onPress={()=>selectSeat(seat[1])} className="w-fit justify-end">
-                        <MaterialIcons name="event-seat" size={32} color={selectedSeats.includes(seat[1]) ? `#1d4ed8` : '#15803d'} />
+                      <Pressable onPress={()=>selectSeat(seat[1])} disabled={getSeatAvailability(seat[1]) == '#374151'} className="w-fit justify-end">
+                        <MaterialIcons name="event-seat" size={32} color={getSeatAvailability(seat[1])} />
                       </Pressable>
                     </View>
                     {/* right */}
                     <View className="flex-1 flex-row items-center justify-start space-x-4">
-                      <Pressable onPress={()=>selectSeat(seat[2])} className="w-fit">
-                        <MaterialIcons name="event-seat" size={32} color={selectedSeats.includes(seat[2]) ? `#1d4ed8` : '#15803d'} />
+                      <Pressable onPress={()=>selectSeat(seat[2])} disabled={getSeatAvailability(seat[2]) == '#374151'} className="w-fit">
+                        <MaterialIcons name="event-seat" size={32} color={getSeatAvailability(seat[2])} />
                       </Pressable>
-                      <Pressable onPress={()=>selectSeat(seat[3])} className="w-fit">
-                        <MaterialIcons name="event-seat" size={32} color={selectedSeats.includes(seat[3]) ? `#1d4ed8` : '#15803d'} />
+                      <Pressable onPress={()=>selectSeat(seat[3])} disabled={getSeatAvailability(seat[3]) == '#374151'} className="w-fit">
+                        <MaterialIcons name="event-seat" size={32} color={getSeatAvailability(seat[3])} />
                       </Pressable>
                     </View>
                   </View>
